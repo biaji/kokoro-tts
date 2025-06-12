@@ -1,0 +1,24 @@
+[versions]
+agp = "8.10.0"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+npy = "0.3.5"
+onnxruntimeAndroid = "1.20.0"
+constraintlayout = "2.1.4"
+pinyin4j = "2.5.1"
+segment = "0.3.1"
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+npy = { module = "org.jetbrains.bio:npy", version.ref = "npy" }
+onnxruntime-android = { module = "com.microsoft.onnxruntime:onnxruntime-android", version.ref = "onnxruntimeAndroid" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+pinyin4j = { module = "com.belerweb:pinyin4j", version.ref = "pinyin4j" }
+segment = { module = "com.github.houbb:segment", version.ref = "segment" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+

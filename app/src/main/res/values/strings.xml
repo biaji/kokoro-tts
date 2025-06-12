@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">基于kokoro的语音合成引擎</string>
+    <string name="app_label">Kokoro-TTS</string>
+    <string name="default_preference">DEFAULT</string>
+    <string name="test_string">2031年4月12日，居民区，在美丽的草原上，白云飘飘，风轻轻吹过。村庄里，小孩们欢快地跑动，老人们静静地品茶，微笑挂在脸上。远方的山峦连绵起伏，江水潺潺流淌，映照着落日的余晖。人们在田间劳作，汗水滴落，换来一季丰收。夜晚，明月高悬，星光点点，世界一片祥和。</string>
+</resources>
