@@ -36,7 +36,7 @@ dependencies {
     implementation libs.onnxruntime.android
     implementation libs.npy
     implementation libs.constraintlayout
-    implementation libs.pinyin4j
+    implementation libs.pinyin
     //
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

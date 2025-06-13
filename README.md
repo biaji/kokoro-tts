@@ -20,4 +20,4 @@
 ## 组件来源
  - [kokoro-int8-multi-lang-v1_1.tar.bz2](https://k2-fsa.github.io/sherpa/onnx/tts/pretrained_models/kokoro.html#kokoro-multi-lang-v1-1-chinese-english-103-speakers)
  - 分词：https://github.com/houbb/segment
- - [Pinyin4j](https://pinyin4j.sourceforge.net/)
+ - [中文转拼音](https://github.com/houbb/pinyin)

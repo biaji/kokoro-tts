@@ -4,15 +4,12 @@ import static java.util.Map.entry;
 
 import android.util.Pair;
 
+import com.github.houbb.pinyin.constant.enums.PinyinStyleEnum;
+import com.github.houbb.pinyin.util.PinyinHelper;
 import com.github.houbb.segment.api.ISegmentResult;
 import com.github.houbb.segment.bs.SegmentBs;
 import com.github.houbb.segment.support.tagging.pos.tag.impl.SegmentPosTaggings;
 
-import net.sourceforge.pinyin4j.PinyinHelper;
-import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
-import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
-import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
-import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -247,38 +244,12 @@ public class ZhFrontend {
         List<String> initials = new ArrayList<>();
         List<String> finals = new ArrayList<>();
 
-        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
-        format.setToneType(HanyuPinyinToneType.WITH_TONE_NUMBER);
-        format.setVCharType(HanyuPinyinVCharType.WITH_V);
-        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+        String pinyinStr = PinyinHelper.toPinyin(word, PinyinStyleEnum.NUM_LAST);
+        String[] pinyinArr = pinyinStr.split(" ");
 
+        for (String pinyin : pinyinArr) {
 
-        for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            String[] pinyins;
-            try {
-                pinyins = PinyinHelper.toHanyuPinyinStringArray(ch, format);
-            } catch (Exception e) {
-                pinyins = null;
-            }
-
-            String pinyin;
-            if (pinyins != null && pinyins.length > 0) {
-                if (List.of("地", "得").contains(word) && pinyins.length > 1) {
-                    pinyin = pinyins[1];
-                } else {
-                    pinyin = pinyins[0];  // 多音字取第一个音
-                }
-            } else {
-                pinyin = String.valueOf(ch); // 非汉字，直接用字符本身
-            }
-
-            // 处理“嗯”特殊逻辑：必须有声母和韵母，且拼音用 n2
-            if (ch == '嗯') {
-                initials.add("n");
-                finals.add("n2");
-                continue;
-            }
+            // TODO 处理“嗯”特殊逻辑：必须有声母和韵母，且拼音用 n2
 
             // 提取声母
             String ini = "";
@@ -295,6 +266,7 @@ public class ZhFrontend {
                     }
                 }
             }
+
             // 适配原代码声母韵母特殊处理 (处理zi/ci/si、zhi/chi/shi/ri)
             if (fin.matches("^i\\d")) {
                 if (ini.equals("z") || ini.equals("c") || ini.equals("s")) {

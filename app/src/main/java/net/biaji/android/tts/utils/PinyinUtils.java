@@ -2,7 +2,8 @@ package net.biaji.android.tts.utils;
 
 import android.util.Log;
 
-import net.sourceforge.pinyin4j.PinyinHelper;
+
+import com.github.houbb.pinyin.util.PinyinHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,9 @@ public class PinyinUtils {
     public static List<String> getFinalsTone3(String word) {
         List<String> result = new ArrayList<>();
         for (char c : word.toCharArray()) {
-            String[] pinyinResult = PinyinHelper.toHanyuPinyinStringArray(c);
-            if (pinyinResult != null && pinyinResult.length > 0) {
-                String pinyin = PinyinHelper.toHanyuPinyinStringArray(c)[0]; // 取第一个拼音
+            String[] pinyinResult = PinyinHelper.toPinyin(String.valueOf(c)).split(" ");
+            if (pinyinResult.length > 0) {
+                String pinyin =  PinyinHelper.toPinyin(String.valueOf(c)).split(" ")[0]; // 取第一个拼音
                 result.add(pinyin);
             } else {
                 Log.d("Pinyin", "跳过：\"" + word + "\"");
