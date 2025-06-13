@@ -40,6 +40,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         voiceSelector = findViewById(R.id.voice_selector);
+        this.context = this;
         loadVoice();
         voiceSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -53,7 +54,6 @@ public class MainActivity extends Activity {
 
             }
         });
-        this.context = this;
     }
 
     private void loadVoice() {
