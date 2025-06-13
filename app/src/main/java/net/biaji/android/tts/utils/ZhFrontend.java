@@ -177,7 +177,7 @@ public class ZhFrontend {
             // 处理ju/qu等发音
             for (int t = 0; t < subFinals.size(); t++) {
                 if (List.of("j", "q", "x").contains(subInitials.get(t))
-                        && subFinals.get(t).contains("u")
+                        && subFinals.get(t).startsWith("u")
                 ) {
                     String mSubFinal = subFinals.get(t).replace("u", "v");
                     subFinals.set(t, mSubFinal);
